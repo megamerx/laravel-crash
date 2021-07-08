@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use Mail;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Mail\PostLiked;
 
 class DashboardController extends Controller
 {
@@ -14,10 +15,8 @@ class DashboardController extends Controller
 
     public function index()
     {
-        #dd(auth()->user());
-        #dd(auth()->user()->posts);
+        $user = auth()->user();
 
-        #dd(Post::find(2));
         return view('dashboard');
     }
 }
