@@ -43,7 +43,7 @@ class PostController extends Controller
 
     public function destroy(Post $post, Request $request)
     {
-        if (!$post->ownedBy(auth()->user)) {
+        if (!$post->ownedBy(auth()->user())) {
             dd('no');
         }
 
