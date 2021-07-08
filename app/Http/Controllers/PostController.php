@@ -7,9 +7,12 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    public function __construct() {
+        $this->middleware(['auth'])->only(['store', 'destroy']);
+    }
+
     public function index()
     {
-        //$posts = Post::orderBy('created_at', 'desc')->with(['user', 'likes'])->paginate(5);
         $posts = Post::latest()->with(['user', 'likes'])->paginate(5);
 
         return view('posts.index', [
@@ -26,9 +29,6 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        #dd($request);
-        # return view('posts.index');
-
         $this->validate($request, [
             'body' => 'required'
         ]);
