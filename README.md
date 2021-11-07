@@ -1,14 +1,25 @@
-<<<<<<< HEAD
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# laravel-crash - a Laravel Crash Course
+Laravel Crash Course MFh0Fd7BsjE
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Video:
+https://www.youtube.com/watch?v=MFh0Fd7BsjE
 
-## About Laravel
+## Setup
+
+Setup
+
+- Clone to local dir
+<code>git clone local dir<code>
+- run composer install
+<code>composer install<code>
+- Run migrate (make sure mysql is running)
+<code>php artisan migrate </code>
+
+
+
+# ---------------------- 
+
+## About Laravel ##
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
@@ -58,13 +69,7 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+## License 
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 =======
-# laravel-crash
-Laravel Crash Course MFh0Fd7BsjE
-
-Video:
-https://www.youtube.com/watch?v=MFh0Fd7BsjE
->>>>>>> 09257d5d9be4c7c1fd18577a9c623918ec595e10
