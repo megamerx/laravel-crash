@@ -9,13 +9,15 @@ https://www.youtube.com/watch?v=MFh0Fd7BsjE
 Setup
 
 - Clone to local dir
-<code>git clone local dir<code>
+<code>git clone local dir</code>
 - run composer install
-<code>composer install<code>
+<code>composer install</code>
 - Run migrate (make sure mysql is running)
 <code>php artisan migrate </code>
-
-
+- Copy .env.example to .env
+Windows: <code>copy .env.example .env</code>
+Linux: <code>cp .env.example .env</code>
+<code>php artisan serve </code>
 
 # ---------------------- 
 
