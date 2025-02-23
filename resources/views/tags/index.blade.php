@@ -3,7 +3,7 @@
 @section('content')
     <div class="flex justify-center">
         <div class="w-9/12 bg-white p-6 rounded-lg">
-            <form action="{{ route('tags.store')}}" id="tag_create_form" onsubmit="return false;">
+            <form action="{{ route('tags.store')}}" id="tag_create_form" onsubmit="event.preventDefault();">
                 @csrf
 
                 <div class="mb-4">
@@ -20,8 +20,8 @@
 
                 <div class="mb-4">
                     <label for="body" class="sr-only">Body</label>
-                    <textarea name="body" id="body" cols="30" rows="4" class="bg-gray-100 border-2 w-full p-4 rounded-lg
-                    @error('name') border-red-500 @enderror" placeholder="Tag something!"></textarea>
+                    <textarea name="description" id="description" cols="30" rows="4" class="bg-gray-100 border-2 w-full p-4 rounded-lg
+                    @error('name') border-red-500 @enderror" placeholder="Tag description!"></textarea>
 
                     @error('name')
                         <div class="text-red-500 mt-2 text-sm">
@@ -37,10 +37,10 @@
 
             @if ($tags->count())
                 @foreach ($tags as $tag)
-                    <x-post :tag="$tag" />
+                    <x-tag :tag="$tag" />
                 @endforeach
 
-                {{ $posts->links() }}
+                {{ $tags->links() }}
             @else
                 <p>There are no Tags</p>
             @endif
@@ -52,18 +52,21 @@
 <script type="text/javascript">
 
 $(window).on('load', function() {
-    $('#tag-button-submit').click(function() {
-        alert('test');
+    $('#tag-button-submit').click(function() {        
         let data = {
                 _token: "{{ csrf_token() }}",
                 name: $('#name').val(),
-                description: $('#description').val()
+                body: $('#description').val()
             };
         $.post('{{ route('tags.store')}}',
             data,
             function (data) {
                 console.log(data);
-                alert(data);
+                Swal.fire({
+                    title: "Posty | Tag Response",
+                    text: data.message,
+                    icon: "success"
+                });
             }
         );
     });

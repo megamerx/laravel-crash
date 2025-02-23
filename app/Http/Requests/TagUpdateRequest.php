@@ -25,7 +25,7 @@ class TagUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'description' => 'max:100'
+            'body' => 'max:100'
         ];
     }
 }

@@ -18,7 +18,8 @@
         </style>
         
         <!-- jquery -->
-        {{-- <link rel="text/javascript" href="{{ asset('js/jquery-3.7.1.min.js') }}" /> --}}
+        <script rel="text/javascript" src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
 
     <body class='bg-gray-200'>
@@ -62,7 +63,7 @@
             </ul>
         </nav>
 
-         @yield('content')       
+        @yield('content')       
         @yield('scripts')
     </body>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 use App\Http\Requests\TagCreateRequest;
 use App\Http\Requests\TagUpdateRequest;
@@ -41,9 +42,27 @@ class TagController extends Controller
      */
     public function store(TagCreateRequest $request)
     {
-        dd($request->all());
-        $tag = Tag::create($request->validated());
-        dd($tag);
+        $response_code = 201;
+        $response_data = [
+            'message' => 'Tag created',
+            'status'=> 'success',
+            'code' => $response_code
+        ];
+        try {
+            // dd($request->validated());
+            // dd($request->all());
+            $tag = Tag::create($request->validated());
+        } catch (ValidationException $e) {
+            $response_data['message'] = $e->getMessage();
+            \Log::error($response_data['message']); 
+            $response_code = 422;
+        } catch (\Exception $e) {
+            dd($e->getMessage());   
+            $response_code = 422;
+        }        
+        $response_data['code'] = $response_code;
+        return response()->json($response_data, $response_code);
+        
     }
 
     /**
