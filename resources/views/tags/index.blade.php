@@ -42,7 +42,7 @@
 
                 {{ $tags->links() }}
             @else
-                <p>There are no Tags</p>
+                <p>There are ngso Tags</p>
             @endif
         </div>
     </div>
@@ -56,17 +56,19 @@ $(window).on('load', function() {
         let data = {
                 _token: "{{ csrf_token() }}",
                 name: $('#name').val(),
-                body: $('#description').val()
+                description: $('#description').val()
             };
         $.post('{{ route('tags.store')}}',
             data,
             function (data) {
-                console.log(data);
                 Swal.fire({
                     title: "Posty | Tag Response",
                     text: data.message,
                     icon: "success"
+                }, function() {
+                    location.reload();
                 });
+                
             }
         );
     });
