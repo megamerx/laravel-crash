@@ -4,11 +4,11 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserApiPerformanceTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseTransactions;
 
     protected function setUp(): void
     {
@@ -55,7 +55,7 @@ class UserApiPerformanceTest extends TestCase
 
         $response = $this->postJson('/api/users', $payload);
         $message = isset($response->json()['message']) ? $response->json()['message'] : $response->json();
-        $this->print_debug([$payload, $response->status(), $message]);
+        // $this->print_debug([$payload, $response->status(), $message]);
 
         $duration = microtime(true) - $start;
 
