@@ -86,6 +86,40 @@ class UserApiPerformanceTest extends TestCase
         $this->assertLessThan(0.3, $duration, 'User show API is too slow.');
     }
 
+    /**
+     * Test GET /api/users/{id} for speed.
+     */
+    public function test_user_show_many_performance()
+    {
+        $startAll = microtime(true);
+        $times = 1000;
+
+        for ($i=0; $i<$times; $i++) {
+
+            $user = User::inRandomOrder()->first();
+
+            $start = microtime(true);
+
+            $response = $this->getJson("/api/users/{$user->id}");
+
+            $message = isset($response->json()['message']) ? $response->json()['message'] : $response->json();
+            
+            $duration = microtime(true) - $start;
+
+            $this->print_debug([$response->status(), $message]);
+
+            $response->assertStatus(200);
+
+            fwrite(STDOUT, "\nGET /api/users/{$user->id} took {$duration} seconds\n");
+
+            $this->assertLessThan(0.3, $duration, 'User show API is too slow.');
+        }
+
+        $durationAll = microtime(true) - $startAll;
+
+        fwrite(STDOUT, "\nGETx$times /api/users/{$user->id} x {$times} took {$durationAll} seconds\n");
+    }
+
     function print_debug($var) {
         fwrite(STDOUT, print_r($var, true));
     }
